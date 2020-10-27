@@ -1,0 +1,527 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="Model.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="sysdiagrams">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="principal_id" Type="int" Nullable="false" />
+    <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="version" Type="int" />
+    <Property Name="definition" Type="varbinary(max)" />
+  </EntityType>
+  <EntityType Name="TBL_Aidat">
+    <Key>
+      <PropertyRef Name="İD" />
+    </Key>
+    <Property Name="İD" Type="int" Nullable="false" />
+    <Property Name="DaireİD" Type="int" />
+    <Property Name="KesimTarih" Type="smalldatetime" />
+    <Property Name="SonÖdeme" Type="smalldatetime" />
+    <Property Name="ToplamGider" Type="int" />
+    <Property Name="Ödenecek" Type="int" />
+    <Property Name="Alındı" Type="bit" />
+    <Property Name="AidatAd" Type="nchar" MaxLength="10" />
+    <Property Name="Kategori" Type="tinyint" />
+    <Property Name="OdenenTarih" Type="smalldatetime" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'u7199768_D_S_K37.dbo.TBL_Borc' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="TBL_Borc">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="DaireİD" Type="int" />
+    <Property Name="UyeİD" Type="int" />
+    <Property Name="AidatİD" Type="int" />
+    <Property Name="BorcAd" Type="varchar" MaxLength="50" />
+    <Property Name="DURUM" Type="bit" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6013: The table/view 'u7199768_D_S_K37.dbo.TBL_BorcKategori' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
+        <EntityType Name="TBL_BorcKategori">
+          <Property Name="ID" Type="int" />
+          <Property Name="AD" Type="nchar" MaxLength="10" />
+          <Property Name="Durum" Type="bit" />
+        </EntityType>-->
+  <EntityType Name="TBL_CEZALAR">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="UYE" Type="int" />
+    <Property Name="BASLANGIC" Type="datetime" />
+    <Property Name="BITIS" Type="datetime" />
+    <Property Name="PARA" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="HAREKET" Type="tinyint" />
+  </EntityType>
+  <EntityType Name="TBL_Daireler">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" Nullable="false" />
+    <Property Name="BlokNo" Type="int" />
+    <Property Name="BlokAd" Type="varchar" MaxLength="50" />
+    <Property Name="DaireNo" Type="int" />
+    <Property Name="DaireDurum" Type="varchar" MaxLength="50" />
+    <Property Name="DaireİD" Type="int" />
+    <Property Name="BorcİD" Type="int" />
+    <Property Name="UyeİD" Type="int" />
+  </EntityType>
+  <EntityType Name="TBL_DUYURULAR">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="KATEGORI" Type="varchar" MaxLength="50" />
+    <Property Name="ICERIK" Type="varchar" MaxLength="200" />
+    <Property Name="TARIH" Type="datetime" />
+  </EntityType>
+  <EntityType Name="TBL_Gelir">
+    <Key>
+      <PropertyRef Name="İD" />
+    </Key>
+    <Property Name="İD" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="GelirAd" Type="nvarchar" MaxLength="50" />
+    <Property Name="Kategori" Type="tinyint" />
+    <Property Name="GelirBilgi" Type="nvarchar" MaxLength="250" />
+    <Property Name="GelirTl" Type="int" />
+    <Property Name="ToplamGelir" Type="int" StoreGeneratedPattern="Computed" />
+  </EntityType>
+  <EntityType Name="TBL_Gider">
+    <Key>
+      <PropertyRef Name="İD" />
+    </Key>
+    <Property Name="İD" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="GiderKategori" Type="tinyint" />
+    <Property Name="GiderAd" Type="nvarchar" MaxLength="50" />
+    <Property Name="GiderTl" Type="int" />
+    <Property Name="GiderBilgi" Type="nvarchar" MaxLength="250" />
+  </EntityType>
+  <EntityType Name="TBL_HAKKIMIZDA">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="tinyint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ACIKLAMA" Type="varchar(max)" />
+  </EntityType>
+  <EntityType Name="TBL_HAREKET">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="tinyint" Nullable="false" />
+    <Property Name="Aidatİd" Type="int" />
+    <Property Name="UYE" Type="int" />
+    <Property Name="PERSONEL" Type="tinyint" />
+    <Property Name="HesapKesim" Type="datetime" />
+    <Property Name="SonOdeme" Type="datetime" />
+    <Property Name="ISLEMDURUM" Type="bit" />
+    <Property Name="UYEGETIRTARIH" Type="datetime" />
+  </EntityType>
+  <EntityType Name="TBL_ILETISIM">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="AD" Type="varchar" MaxLength="50" />
+    <Property Name="MAIL" Type="varchar" MaxLength="50" />
+    <Property Name="TELEFON" Type="varchar" MaxLength="11" />
+    <Property Name="KONU" Type="varchar" MaxLength="50" />
+    <Property Name="MESAJ" Type="varchar" MaxLength="1000" />
+  </EntityType>
+  <EntityType Name="TBL_KASA">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="AY" Type="varchar" MaxLength="20" />
+    <Property Name="TUTAR" Type="decimal" Precision="18" Scale="2" />
+  </EntityType>
+  <EntityType Name="TBL_KATEGORI">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="tinyint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="AD" Type="varchar" MaxLength="20" />
+    <Property Name="DURUM" Type="bit" />
+  </EntityType>
+  <EntityType Name="TBL_KITAP">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="AD" Type="varchar" MaxLength="50" />
+    <Property Name="KATEGORI" Type="tinyint" />
+    <Property Name="YAZAR" Type="int" />
+    <Property Name="BASKIYILI" Type="char" MaxLength="4" />
+    <Property Name="YAYINEVI" Type="varchar" MaxLength="50" />
+    <Property Name="SAYFA" Type="varchar" MaxLength="4" />
+    <Property Name="DURUM" Type="bit" />
+    <Property Name="KITAPRESIM" Type="varchar" MaxLength="250" />
+  </EntityType>
+  <EntityType Name="TBL_MESAJLAR">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="GONDEREN" Type="varchar" MaxLength="50" />
+    <Property Name="ALICI" Type="varchar" MaxLength="50" />
+    <Property Name="KONU" Type="varchar" MaxLength="50" />
+    <Property Name="ICERIK" Type="varchar" MaxLength="500" />
+    <Property Name="TARIH" Type="datetime" />
+  </EntityType>
+  <EntityType Name="TBL_PERSONEL">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="tinyint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="PERSONEL" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="TBL_UYELER">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="AD" Type="varchar" MaxLength="20" />
+    <Property Name="SOYAD" Type="varchar" MaxLength="20" />
+    <Property Name="MAIL" Type="varchar" MaxLength="50" />
+    <Property Name="KULLANICIADI" Type="varchar" MaxLength="30" />
+    <Property Name="SIFRE" Type="varchar" MaxLength="30" />
+    <Property Name="FOTOGRAF" Type="varchar" MaxLength="250" />
+    <Property Name="TELEFON" Type="varchar" MaxLength="20" />
+    <Property Name="OKUL" Type="varchar" MaxLength="100" />
+    <Property Name="Role" Type="varchar" MaxLength="20" />
+  </EntityType>
+  <EntityType Name="TBL_YAZAR">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="AD" Type="varchar" MaxLength="30" />
+    <Property Name="SOYAD" Type="varchar" MaxLength="30" />
+    <Property Name="DETAY" Type="varchar" MaxLength="1000" />
+  </EntityType>
+  <Association Name="FK_TBL_Aidat_TBL_Daireler">
+    <End Role="TBL_Daireler" Type="Self.TBL_Daireler" Multiplicity="0..1" />
+    <End Role="TBL_Aidat" Type="Self.TBL_Aidat" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TBL_Daireler">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="TBL_Aidat">
+        <PropertyRef Name="DaireİD" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_TBL_Aidat_TBL_Gider">
+    <End Role="TBL_Gider" Type="Self.TBL_Gider" Multiplicity="0..1" />
+    <End Role="TBL_Aidat" Type="Self.TBL_Aidat" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TBL_Gider">
+        <PropertyRef Name="İD" />
+      </Principal>
+      <Dependent Role="TBL_Aidat">
+        <PropertyRef Name="ToplamGider" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_TBL_Aidat_TBL_KATEGORI">
+    <End Role="TBL_KATEGORI" Type="Self.TBL_KATEGORI" Multiplicity="0..1" />
+    <End Role="TBL_Aidat" Type="Self.TBL_Aidat" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TBL_KATEGORI">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="TBL_Aidat">
+        <PropertyRef Name="Kategori" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_TBL_Aidat_TBL_UYELER">
+    <End Role="TBL_UYELER" Type="Self.TBL_UYELER" Multiplicity="1" />
+    <End Role="TBL_Aidat" Type="Self.TBL_Aidat" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="TBL_UYELER">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="TBL_Aidat">
+        <PropertyRef Name="İD" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_TBL_Borc_TBL_Aidat">
+    <End Role="TBL_Aidat" Type="Self.TBL_Aidat" Multiplicity="0..1" />
+    <End Role="TBL_Borc" Type="Self.TBL_Borc" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TBL_Aidat">
+        <PropertyRef Name="İD" />
+      </Principal>
+      <Dependent Role="TBL_Borc">
+        <PropertyRef Name="AidatİD" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_TBL_Borc_TBL_Daireler">
+    <End Role="TBL_Daireler" Type="Self.TBL_Daireler" Multiplicity="0..1" />
+    <End Role="TBL_Borc" Type="Self.TBL_Borc" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TBL_Daireler">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="TBL_Borc">
+        <PropertyRef Name="DaireİD" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_TBL_Borc_TBL_UYELER">
+    <End Role="TBL_UYELER" Type="Self.TBL_UYELER" Multiplicity="0..1" />
+    <End Role="TBL_Borc" Type="Self.TBL_Borc" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TBL_UYELER">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="TBL_Borc">
+        <PropertyRef Name="UyeİD" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_TBL_CEZALAR_TBL_HAREKET">
+    <End Role="TBL_HAREKET" Type="Self.TBL_HAREKET" Multiplicity="0..1" />
+    <End Role="TBL_CEZALAR" Type="Self.TBL_CEZALAR" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TBL_HAREKET">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="TBL_CEZALAR">
+        <PropertyRef Name="HAREKET" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_TBL_Daireler_TBL_UYELER">
+    <End Role="TBL_UYELER" Type="Self.TBL_UYELER" Multiplicity="0..1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="TBL_Daireler" Type="Self.TBL_Daireler" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TBL_UYELER">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="TBL_Daireler">
+        <PropertyRef Name="UyeİD" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_TBL_Gelir_TBL_KATEGORI">
+    <End Role="TBL_KATEGORI" Type="Self.TBL_KATEGORI" Multiplicity="0..1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="TBL_Gelir" Type="Self.TBL_Gelir" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TBL_KATEGORI">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="TBL_Gelir">
+        <PropertyRef Name="Kategori" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_TBL_Gider_TBL_Gelir">
+    <End Role="TBL_Gelir" Type="Self.TBL_Gelir" Multiplicity="1" />
+    <End Role="TBL_Gider" Type="Self.TBL_Gider" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="TBL_Gelir">
+        <PropertyRef Name="İD" />
+      </Principal>
+      <Dependent Role="TBL_Gider">
+        <PropertyRef Name="İD" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_TBL_Gider_TBL_KATEGORI">
+    <End Role="TBL_KATEGORI" Type="Self.TBL_KATEGORI" Multiplicity="0..1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="TBL_Gider" Type="Self.TBL_Gider" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TBL_KATEGORI">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="TBL_Gider">
+        <PropertyRef Name="GiderKategori" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_TBL_HAREKET_TBL_Aidat">
+    <End Role="TBL_Aidat" Type="Self.TBL_Aidat" Multiplicity="0..1" />
+    <End Role="TBL_HAREKET" Type="Self.TBL_HAREKET" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TBL_Aidat">
+        <PropertyRef Name="İD" />
+      </Principal>
+      <Dependent Role="TBL_HAREKET">
+        <PropertyRef Name="Aidatİd" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_TBL_HAREKET_TBL_UYELER">
+    <End Role="TBL_UYELER" Type="Self.TBL_UYELER" Multiplicity="0..1" />
+    <End Role="TBL_HAREKET" Type="Self.TBL_HAREKET" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TBL_UYELER">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="TBL_HAREKET">
+        <PropertyRef Name="UYE" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_TBL_KITAP_TBL_KATEGORI">
+    <End Role="TBL_KATEGORI" Type="Self.TBL_KATEGORI" Multiplicity="0..1" />
+    <End Role="TBL_KITAP" Type="Self.TBL_KITAP" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TBL_KATEGORI">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="TBL_KITAP">
+        <PropertyRef Name="KATEGORI" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_TBL_KITAP_TBL_YAZAR">
+    <End Role="TBL_YAZAR" Type="Self.TBL_YAZAR" Multiplicity="0..1" />
+    <End Role="TBL_KITAP" Type="Self.TBL_KITAP" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TBL_YAZAR">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="TBL_KITAP">
+        <PropertyRef Name="YAZAR" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Function Name="fn_diagramobjects" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" ReturnType="int" />
+  <Function Name="sp_alterdiagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+    <Parameter Name="owner_id" Type="int" Mode="In" />
+    <Parameter Name="version" Type="int" Mode="In" />
+    <Parameter Name="definition" Type="varbinary(max)" Mode="In" />
+  </Function>
+  <Function Name="sp_creatediagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+    <Parameter Name="owner_id" Type="int" Mode="In" />
+    <Parameter Name="version" Type="int" Mode="In" />
+    <Parameter Name="definition" Type="varbinary(max)" Mode="In" />
+  </Function>
+  <Function Name="sp_dropdiagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+    <Parameter Name="owner_id" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_helpdiagramdefinition" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+    <Parameter Name="owner_id" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_helpdiagrams" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+    <Parameter Name="owner_id" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_renamediagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+    <Parameter Name="owner_id" Type="int" Mode="In" />
+    <Parameter Name="new_diagramname" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="sp_upgraddiagrams" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <EntityContainer Name="ModelStoreContainer">
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="TBL_Aidat" EntityType="Self.TBL_Aidat" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="TBL_CEZALAR" EntityType="Self.TBL_CEZALAR" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="TBL_Daireler" EntityType="Self.TBL_Daireler" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="TBL_DUYURULAR" EntityType="Self.TBL_DUYURULAR" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="TBL_Gelir" EntityType="Self.TBL_Gelir" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="TBL_Gider" EntityType="Self.TBL_Gider" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="TBL_HAKKIMIZDA" EntityType="Self.TBL_HAKKIMIZDA" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="TBL_HAREKET" EntityType="Self.TBL_HAREKET" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="TBL_ILETISIM" EntityType="Self.TBL_ILETISIM" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="TBL_KASA" EntityType="Self.TBL_KASA" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="TBL_KATEGORI" EntityType="Self.TBL_KATEGORI" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="TBL_KITAP" EntityType="Self.TBL_KITAP" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="TBL_MESAJLAR" EntityType="Self.TBL_MESAJLAR" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="TBL_PERSONEL" EntityType="Self.TBL_PERSONEL" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="TBL_UYELER" EntityType="Self.TBL_UYELER" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="TBL_YAZAR" EntityType="Self.TBL_YAZAR" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="TBL_Borc" EntityType="Self.TBL_Borc" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+[TBL_Borc].[ID] AS [ID], 
+[TBL_Borc].[DaireİD] AS [DaireİD], 
+[TBL_Borc].[UyeİD] AS [UyeİD], 
+[TBL_Borc].[AidatİD] AS [AidatİD], 
+[TBL_Borc].[BorcAd] AS [BorcAd], 
+[TBL_Borc].[DURUM] AS [DURUM]
+FROM [dbo].[TBL_Borc] AS [TBL_Borc]</DefiningQuery>
+    </EntitySet>
+    <AssociationSet Name="FK_TBL_Aidat_TBL_Daireler" Association="Self.FK_TBL_Aidat_TBL_Daireler">
+      <End Role="TBL_Daireler" EntitySet="TBL_Daireler" />
+      <End Role="TBL_Aidat" EntitySet="TBL_Aidat" />
+    </AssociationSet>
+    <AssociationSet Name="FK_TBL_Aidat_TBL_Gider" Association="Self.FK_TBL_Aidat_TBL_Gider">
+      <End Role="TBL_Gider" EntitySet="TBL_Gider" />
+      <End Role="TBL_Aidat" EntitySet="TBL_Aidat" />
+    </AssociationSet>
+    <AssociationSet Name="FK_TBL_Aidat_TBL_KATEGORI" Association="Self.FK_TBL_Aidat_TBL_KATEGORI">
+      <End Role="TBL_KATEGORI" EntitySet="TBL_KATEGORI" />
+      <End Role="TBL_Aidat" EntitySet="TBL_Aidat" />
+    </AssociationSet>
+    <AssociationSet Name="FK_TBL_Aidat_TBL_UYELER" Association="Self.FK_TBL_Aidat_TBL_UYELER">
+      <End Role="TBL_UYELER" EntitySet="TBL_UYELER" />
+      <End Role="TBL_Aidat" EntitySet="TBL_Aidat" />
+    </AssociationSet>
+    <AssociationSet Name="FK_TBL_Borc_TBL_Aidat" Association="Self.FK_TBL_Borc_TBL_Aidat">
+      <End Role="TBL_Aidat" EntitySet="TBL_Aidat" />
+      <End Role="TBL_Borc" EntitySet="TBL_Borc" />
+    </AssociationSet>
+    <AssociationSet Name="FK_TBL_Borc_TBL_Daireler" Association="Self.FK_TBL_Borc_TBL_Daireler">
+      <End Role="TBL_Daireler" EntitySet="TBL_Daireler" />
+      <End Role="TBL_Borc" EntitySet="TBL_Borc" />
+    </AssociationSet>
+    <AssociationSet Name="FK_TBL_Borc_TBL_UYELER" Association="Self.FK_TBL_Borc_TBL_UYELER">
+      <End Role="TBL_UYELER" EntitySet="TBL_UYELER" />
+      <End Role="TBL_Borc" EntitySet="TBL_Borc" />
+    </AssociationSet>
+    <AssociationSet Name="FK_TBL_CEZALAR_TBL_HAREKET" Association="Self.FK_TBL_CEZALAR_TBL_HAREKET">
+      <End Role="TBL_HAREKET" EntitySet="TBL_HAREKET" />
+      <End Role="TBL_CEZALAR" EntitySet="TBL_CEZALAR" />
+    </AssociationSet>
+    <AssociationSet Name="FK_TBL_Daireler_TBL_UYELER" Association="Self.FK_TBL_Daireler_TBL_UYELER">
+      <End Role="TBL_UYELER" EntitySet="TBL_UYELER" />
+      <End Role="TBL_Daireler" EntitySet="TBL_Daireler" />
+    </AssociationSet>
+    <AssociationSet Name="FK_TBL_Gelir_TBL_KATEGORI" Association="Self.FK_TBL_Gelir_TBL_KATEGORI">
+      <End Role="TBL_KATEGORI" EntitySet="TBL_KATEGORI" />
+      <End Role="TBL_Gelir" EntitySet="TBL_Gelir" />
+    </AssociationSet>
+    <AssociationSet Name="FK_TBL_Gider_TBL_Gelir" Association="Self.FK_TBL_Gider_TBL_Gelir">
+      <End Role="TBL_Gelir" EntitySet="TBL_Gelir" />
+      <End Role="TBL_Gider" EntitySet="TBL_Gider" />
+    </AssociationSet>
+    <AssociationSet Name="FK_TBL_Gider_TBL_KATEGORI" Association="Self.FK_TBL_Gider_TBL_KATEGORI">
+      <End Role="TBL_KATEGORI" EntitySet="TBL_KATEGORI" />
+      <End Role="TBL_Gider" EntitySet="TBL_Gider" />
+    </AssociationSet>
+    <AssociationSet Name="FK_TBL_HAREKET_TBL_Aidat" Association="Self.FK_TBL_HAREKET_TBL_Aidat">
+      <End Role="TBL_Aidat" EntitySet="TBL_Aidat" />
+      <End Role="TBL_HAREKET" EntitySet="TBL_HAREKET" />
+    </AssociationSet>
+    <AssociationSet Name="FK_TBL_HAREKET_TBL_UYELER" Association="Self.FK_TBL_HAREKET_TBL_UYELER">
+      <End Role="TBL_UYELER" EntitySet="TBL_UYELER" />
+      <End Role="TBL_HAREKET" EntitySet="TBL_HAREKET" />
+    </AssociationSet>
+    <AssociationSet Name="FK_TBL_KITAP_TBL_KATEGORI" Association="Self.FK_TBL_KITAP_TBL_KATEGORI">
+      <End Role="TBL_KATEGORI" EntitySet="TBL_KATEGORI" />
+      <End Role="TBL_KITAP" EntitySet="TBL_KITAP" />
+    </AssociationSet>
+    <AssociationSet Name="FK_TBL_KITAP_TBL_YAZAR" Association="Self.FK_TBL_KITAP_TBL_YAZAR">
+      <End Role="TBL_YAZAR" EntitySet="TBL_YAZAR" />
+      <End Role="TBL_KITAP" EntitySet="TBL_KITAP" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

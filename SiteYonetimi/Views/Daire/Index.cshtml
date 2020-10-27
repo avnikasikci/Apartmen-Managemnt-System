@@ -1,0 +1,54 @@
+﻿
+
+@using SiteYonetimi.Models.Entitiy
+@model List<TBL_Daireler>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+
+<h2>Daireler</h2>
+@using (Html.BeginForm("Index", "Kitaplar", FormMethod.Get))
+{
+    <div style="margin-bottom:15px; margin-top:15px;">
+        <b>Aranacak Kelimeyi Giriniz:&nbsp;</b>
+        @Html.TextBox("p")
+        <input type="submit" value="Ara" />
+        @*<input type="text" class="form-control" placeholder="Kitap Ara..."  />*@
+    </div>}
+<table class="table table-bordered">
+    <tr style="background-color:rgb(252,178,22)">
+        <th>ID</th>
+        <th>Blok No</th>
+        <th>Blok Adı</th>
+        <th>Daire Numarası</th>
+        <th>Daire Sakini</th>
+        <th>Daire İd</th>
+        <th>Borc İd</th>
+        <th>Uye İd</th>
+        <th>Uye Ad</th>
+        <th>Sil</th>
+        <th>Güncelle</th>
+    </tr>
+    @foreach (var k in Model)
+    {
+<tr>
+    <td>@k.ID</td>
+    <td>@k.BlokNo</td>
+    <td>@k.BlokAd </td>
+    <td>@k.DaireNo</td>
+    <td>@k.DaireDurum</td>
+    <td>@k.DaireİD</td>
+
+    <td>@k.BorcİD</td>
+    <td>@k.UyeİD</td>
+
+    <td>@Html.ActionLink("Sil", "KitapSil", new { id = k.ID }, new { @class = "btn btn-danger", onclick = "return confirm('Silmek İstiyor Musunuz ?')" })  </td>
+    <td><a href="/Kitaplar/KitapGetir/@k.ID" class="btn btn-success">Güncelle</a> </td>
+</tr>
+}
+
+
+</table>
+<a href="/Kitaplar/KitapEkle" class="btn btn-primary">Yeni Kitap Ekle</a>

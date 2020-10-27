@@ -1,0 +1,37 @@
+﻿@model SiteYonetimi.Models.Entitiy.TBL_Gider
+@{
+    ViewBag.Title = "GiderGetir";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<h2>GiderGetir</h2>
+
+<h2>Gider Güncelleme Sayfası</h2>
+@using (Html.BeginForm("GiderGuncelle", "Gider", FormMethod.Post))
+{
+    <div style="margin-bottom:15px"></div>
+    <div class="form-group">
+        <div style="margin-bottom:15px">
+            <label>ID</label>
+            @Html.TextBoxFor(k => k.İD, new { @class = "form-control", @readonly = "true" })
+        </div>
+        <div style="margin-bottom:15px">
+            <label>Gider Adı</label>
+            @Html.TextBoxFor(k => k.GiderAd, new { @class = "form-control", @maxlength = "50" })
+        </div>
+        <div style="margin-bottom:15px">
+            <label>Kategorisi</label>
+            @Html.DropDownListFor(k => k.TBL_KATEGORI.ID, (List<SelectListItem>)ViewBag.dgr1, new { @class = "form-control" })
+        </div>
+
+        <div style="margin-bottom:15px">
+            <label>Gider Tl</label>
+            @Html.TextBoxFor(k => k.GiderTl, new { @class = "form-control", @maxlength = "4" })
+        </div>
+
+
+        <button class="btn btn-warning">Gider Bilgilerini Güncelle</button>
+        <input type="hidden" name="Durum" value="True" />
+    </div>}
+
+

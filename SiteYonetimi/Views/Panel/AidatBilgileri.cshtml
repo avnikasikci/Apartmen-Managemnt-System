@@ -1,0 +1,83 @@
+﻿@using SiteYonetimi.Models.Entitiy;
+@model List<TBL_Aidat>
+
+@{
+    ViewBag.Title = "Duyurular";
+    Layout = "~/Views/Shared/_LayoutPanel.cshtml";
+}
+
+
+<h2>Aidat Geçmişim</h2>
+
+<table class="table table-bordered">
+    <tr style="background-color:rgb(252,178,22)">
+        <th>ID</th>
+        <th>Daire No</th>
+        <th>Blok No</th>
+        <th>Hesap Kesim Tarihi</th>
+        <th>Hesap Son Ödeme Tarihi</th>
+        <th>Ödeme Miktarı(Tl)</th>
+        <th>Ödeme Durumu</th>
+        <th>Toplam Gelir</th>
+        <th>Toplam Gider</th>
+        <th>Sil</th>
+        <th>Guncelle</th>
+
+    </tr>
+    @foreach (var k in Model)
+    {
+        <tr>
+            <td>@k.İD</td>
+            <td>@k.TBL_Daireler.DaireNo</td>
+            <td>@k.TBL_Daireler.BlokAd</td>
+            <td>@k.KesimTarih</td>
+            <td>@k.SonÖdeme</td>
+            <td>@ViewBag.TotalOne</td>
+            <td>@k.Alındı</td>
+            <td>@ViewBag.sumgelir</td>
+            <td>@ViewBag.sumgider</td>
+
+            <td>@Html.ActionLink("Ode", "AidatOde", new { id = k.İD }, new { @class = "btn btn-danger", onclick = "return confirm('Silmek İstiyor Musunuz ?')" })  </td>
+
+
+        </tr>
+}
+
+
+</table>
+
+@*<h2>Duyurular</h2>
+    <table class="table table-bordered">
+        <tr style="background-color:rgb(252,178,22)">
+            <th>ID</th>
+            <th>Daire No</th>
+            <th>Blok No</th>
+            <th>Hesap Kesim Tarihi</th>
+            <th>Hesap Son Ödeme Tarihi</th>
+            <th>Ödeme Miktarı(Tl)</th>
+            <th>Ödeme Durumu</th>
+            <th>Toplam Gelir</th>
+            <th>Toplam Gider</th>
+            <th>Sil</th>
+
+        </tr>
+        @foreach (var k in Model)
+        {
+    <tr>
+
+        <td>@k.ID</td>
+        <td>@k.DaireNo</td>
+        <td>@k.BlokNo</td>
+        <td>@k.TBL_Aidat.KesimTarihi</td>
+        <td>@k.TBL_Aidat.SonÖdeme</td>
+        <td>@k.TBL_Aidat.SonÖdeme</td>
+        <td>@ViewBag.TotalOne</td>
+        <td>@k.TBL_Aidat.Alındı</td>
+        <td>@ViewBag.sumgelir</td>
+        <td>@ViewBag.sumgider</td>
+        <td>@Html.ActionLink("Sil", "GelirSil", new { id = k.İD }, new { @class = "btn btn-danger", onclick = "return confirm('Silmek İstiyor Musunuz ?')" })  </td>
+
+
+    </tr>
+        }
+    </table>*@

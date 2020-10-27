@@ -1,0 +1,47 @@
+﻿@using SiteYonetimi.Models.Entitiy
+@model List<TBL_Gider>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+
+
+
+<h2>Gider Tablosu</h2>
+@using (Html.BeginForm("Index", "Gider", FormMethod.Get))
+{
+    <div style="margin-bottom:15px; margin-top:15px;">
+        <b>Aranacak Kelimeyi Giriniz:&nbsp;</b>
+        @Html.TextBox("p")
+        <input type="submit" value="Ara" />
+        @*<input type="text" class="form-control" placeholder="Kitap Ara..."  />*@
+    </div>}
+<table class="table table-bordered">
+    <tr style="background-color:rgb(252,178,22)">
+        <th>ID</th>
+        <th> Kategorisi </th>
+        <th>Gider Adı</th>
+        <th> Tl </th>
+        <th>Neye Bu Kadar Para Gitti?</th>
+        <th>Sil</th>
+        <th>Güncelle</th>
+    </tr>
+    @foreach (var k in Model)
+    {
+<tr>
+    <td>@k.İD</td>
+    <td>@k.TBL_KATEGORI.AD</td>
+    <td>@k.GiderAd</td>
+    <td>@k.GiderTl</td>
+    <td>@k.GiderBilgi</td>
+    <td>@Html.ActionLink("Sil", "GiderSil", new { id = k.İD }, new { @class = "btn btn-danger", onclick = "return confirm('Silmek İstiyor Musunuz ?')" })  </td>
+    <td><a href="/Gider/GiderGetir/@k.İD" class="btn btn-success">Güncelle</a> </td>
+</tr>
+    }
+
+
+</table>
+<a href="/Gider/GiderEkle" class="btn btn-primary">Yeni Gider Ekle</a>
+

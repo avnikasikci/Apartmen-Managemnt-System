@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="10635e9429494322b6b2c3fc8790a585" Name="Diagram1">
+        <EntityTypeShape EntityType="Model.sysdiagram" Width="1.5" PointX="10.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.TBL_Aidat" Width="1.5" PointX="3" PointY="6.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.TBL_CEZALAR" Width="1.5" PointX="10.5" PointY="7.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.TBL_Daireler" Width="1.5" PointX="0.75" PointY="2.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.TBL_DUYURULAR" Width="1.5" PointX="2.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.TBL_Gelir" Width="1.5" PointX="3" PointY="12" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.TBL_Gider" Width="1.5" PointX="5.25" PointY="9.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.TBL_HAKKIMIZDA" Width="1.5" PointX="4.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.TBL_HAREKET" Width="1.5" PointX="8.25" PointY="6.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.TBL_ILETISIM" Width="1.5" PointX="10.75" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.TBL_KASA" Width="1.5" PointX="7.75" PointY="10.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.TBL_KATEGORI" Width="1.5" PointX="0.75" PointY="7.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.TBL_KITAP" Width="1.5" PointX="6" PointY="4.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.TBL_MESAJLAR" Width="1.5" PointX="9.75" PointY="10.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.TBL_PERSONEL" Width="1.5" PointX="6.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.TBL_UYELER" Width="1.5" PointX="1.5" PointY="15.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.TBL_YAZAR" Width="1.5" PointX="3.75" PointY="3.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.TBL_Borc" Width="1.5" PointX="8.25" PointY="3" IsExpanded="true" />
+        <AssociationConnector Association="Model.FK_TBL_Aidat_TBL_Daireler" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK_TBL_Aidat_TBL_Gider" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK_TBL_Aidat_TBL_KATEGORI" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK_TBL_Aidat_TBL_UYELER" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK_TBL_Borc_TBL_Aidat" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK_TBL_HAREKET_TBL_Aidat" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK_TBL_CEZALAR_TBL_HAREKET" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK_TBL_Borc_TBL_Daireler" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK_TBL_Daireler_TBL_UYELER" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK_TBL_Gelir_TBL_KATEGORI" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK_TBL_Gider_TBL_Gelir" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK_TBL_Gider_TBL_KATEGORI" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK_TBL_HAREKET_TBL_UYELER" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK_TBL_KITAP_TBL_KATEGORI" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK_TBL_KITAP_TBL_YAZAR" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK_TBL_Borc_TBL_UYELER" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

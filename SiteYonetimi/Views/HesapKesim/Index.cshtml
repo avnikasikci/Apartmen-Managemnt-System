@@ -1,0 +1,33 @@
+﻿@using SiteYonetimi.Models.Entitiy
+@model List<TBL_Aidat>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<h2>Aidat İslemi </h2>
+
+<table class="table table-bordered">
+    <tr style="background-color:rgb(252,178,22)">
+        <th>İşlem ID</th>
+        <th>Aidat Adı</th>
+        <th>Üye</th>
+        <th>Aidat Kesim Tarihi</th>
+        <th>Beklenen  Ödeme Tarihi</th>
+        <th>Durumu</th>
+    </tr>
+    @foreach (var k in Model)
+    {
+<tr>
+    <td>@k.İD</td>
+    <td>@k.AidatAd</td>
+    <td>@k.TBL_UYELER.AD&nbsp;@k.TBL_UYELER.SOYAD </td>
+
+    <td>@Convert.ToDateTime(k.KesimTarih).ToString("dd/MM/yyyy")</td>
+    <td>@Convert.ToDateTime(k.SonÖdeme).ToString("dd/MM/yyyy")</td>
+
+    <td><a href="/HesapKesim/AidatCikis/@k.İD" class="btn btn-danger">Aidati Al</a> </td>
+</tr>}
+
+
+</table>

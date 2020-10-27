@@ -1,0 +1,54 @@
+﻿@using SiteYonetimi.Models.Entitiy
+@model List<TBL_Aidat>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+
+<h2>Aidat</h2>
+@using (Html.BeginForm("Index", "Aidat", FormMethod.Get))
+{
+<div style="margin-bottom:15px; margin-top:15px;">
+    <b>Aranacak Aidat Adını Giriniz:&nbsp;</b>
+    @Html.TextBox("p")
+    <input type="submit" value="Ara" />
+    @*<input type="text" class="form-control" placeholder="Kitap Ara..."  />*@
+</div>}
+<table class="table table-bordered">
+    <tr style="background-color:rgb(252,178,22)">
+        <th>ID</th>
+        <th>Daire No</th>
+        <th>Blok No</th>
+        <th>Hesap Kesim Tarihi</th>
+        <th>Hesap Son Ödeme Tarihi</th>
+        <th>Ödeme Miktarı(Tl)</th>
+        <th>Ödeme Durumu</th>
+        <th>Toplam Gelir</th>
+        <th>Toplam Gider</th>
+        <th>Sil</th>
+        <th>Guncelle</th>
+
+    </tr>
+    @foreach (var k in Model)
+    {
+<tr>
+    <td>@k.İD</td>
+    <td>@k.TBL_Daireler.DaireNo</td>
+    <td>@k.TBL_Daireler.BlokAd</td>
+    <td>@k.KesimTarih</td>
+    <td>@k.SonÖdeme</td>
+    <td>@ViewBag.TotalOne</td>
+    <td>@k.Alındı</td>
+    <td>@ViewBag.sumgelir</td>
+    <td>@ViewBag.sumgider</td>
+
+    <td>@Html.ActionLink("Sil", "AidatSil", new { id = k.İD }, new { @class = "btn btn-danger", onclick = "return confirm('Silmek İstiyor Musunuz ?')" })  </td>
+    <td><a href="/Aidat/AidatGetir/@k.İD" class="btn btn-success">Güncelle</a> </td>
+</tr>
+}
+
+
+</table>
+<a href="/Aidat/AidatEkle" class="btn btn-primary">Yeni Aidat Ekle</a>
+

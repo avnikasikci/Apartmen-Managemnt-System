@@ -1,0 +1,59 @@
+﻿@model SiteYonetimi.Models.Entitiy.TBL_Aidat
+
+@{
+    ViewBag.Title = "AidatGetir";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<h2>Aidat Güncelleme Sayfası</h2>
+@using (Html.BeginForm("AidatGuncelle", "Aidat", FormMethod.Post))
+{
+    <div style="margin-bottom:15px"></div>
+    <div class="form-group">
+        <div style="margin-bottom:15px">
+            <label>İd No</label>
+            @Html.TextBoxFor(k => k.İD, new { @class = "form-control", @maxlength = "4" })
+
+        </div>
+        <div style="margin-top:15px">
+            <label>Daire İd</label>
+            @Html.TextBoxFor(k => k.DaireİD, new { @class = "form-control", @maxlength = "4" })
+
+        </div>
+        <div style="margin-top:15px">
+            <label>Hesap Kesim Tarihi</label>
+            <input type="text" class="form-control" name="KesimTarih" value="@DateTime.Now.ToShortDateString()" readonly="true" />
+        </div>
+        <div style="margin-top:15px">
+            <label>Son Odeme Tarihi</label>
+            <input type="text" class="form-control" name="SonÖdeme" value="@DateTime.Now.AddDays(30).ToShortDateString()" readonly="true" />
+        </div>
+        @*<div style="margin-top:15px">
+            <label>Toplam Gider </label>
+            <input type="text" class="form-control" name="ToplamGider" value="@ViewBag.toplamGider" readonly="true" />
+        </div>*@
+
+        <div style="margin-top:15px">
+            <label>Odenecek Miktar </label>
+            <input type="text" class="form-control" name="Ödenecek" value="@ViewBag.TotalOne" readonly="true" />
+        </div>
+        <div style="margin-top:15px">
+            <label>Aidat Ad</label>
+            @Html.TextBoxFor(k => k.AidatAd, new { @class = "form-control", @maxlength = "50" })
+
+        </div>
+
+        <div style="margin-top:15px">
+            <label>Kategorisi</label>
+            @Html.DropDownListFor(k => k.TBL_KATEGORI.AD, (List<SelectListItem>)ViewBag.dgr1, new { @class = "form-control" })
+
+        </div>
+
+
+        <button class="btn btn-warning">Aidat Bilgilerini Güncelle</button>
+        <input type="hidden" name="Alındı" value="False" />
+    </div>
+    
+    
+    
+    }

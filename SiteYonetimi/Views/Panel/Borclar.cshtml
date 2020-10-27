@@ -1,0 +1,27 @@
+﻿@using SiteYonetimi.Models.Entitiy
+@model List<TBL_Borc>
+@{
+    ViewBag.Title = "Borclar";
+    Layout = "~/Views/Shared/_LayoutPanel.cshtml";
+}
+
+<h2>Borc Geçmişim</h2>
+
+<table class="table table-bordered">
+    <tr style="background-color:rgb(252,178,22)">
+
+        <th>Kitap Adı</th>
+        <th>Kitabın Veriliş Tarihi</th>
+        <th>Beklenen İade Tarihi</th>
+    </tr>
+    @foreach (var k in Model)
+    {
+<tr>
+    <td>@k.BorcAd</td>
+    <td>@k.TBL_Daireler.DaireNo</td>
+
+
+</tr>}
+
+
+</table>
